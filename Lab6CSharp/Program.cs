@@ -1,58 +1,77 @@
-﻿// See https://aka.ms/new-console-template for more information
-/// <summary>
-///  Top-level statements 
-///  Код програми (оператори)  вищого рівня
-/// </summary>
-///
-Console.WriteLine("Lab6 C# ");
-AnyFunc();
+﻿using System;
 
-/// <summary>
-/// 
-///  Top-level statements must precede namespace and type declarations.
-/// At the top-level methods/functions can be defined and used
-/// На верхньому рівні можна визначати та використовувати методи/функції
-/// </summary>
-void AnyFunc()
+// Базовий клас Document
+public abstract class Document
 {
-    Console.WriteLine(" Some function in top-level");
-}
-Console.WriteLine("Problems 1 ");
-AnyFunc();
-//  приклад класів
-UserClass cl = new UserClass();
-cl.Name = " UserClass top-level ";
-User.UserClass cl2 = new();
-cl2.Name = " UserClass namespace User ";
+    public string Number { get; set; }
+    public DateTime Date { get; set; }
 
-
-
-
-/// <summary>
-/// 
-/// Top-level statements must precede namespace and type declarations.
-/// Оператори верхнього рівня мають передувати оголошенням простору імен і типу.
-/// Створення класу(ів) або оголошенням простору імен є закіченням  іструкцій верхнього рівня
-/// 
-/// </summary>
-
-namespace User
-{
-    class UserClass
+    // Віртуальний метод для виведення інформації
+    public virtual void PrintInfo()
     {
-        public string Name { get; set; }
-        public UserClass()
-        {
-            Name = "NoName";
-        }
-        UserClass(string n)
-        {
-            Name = n;
-        }
+        Console.WriteLine($"Number: {Number}");
+        Console.WriteLine($"Date: {Date}");
+    }
+}
+
+// Похідний клас Receipt
+public class Receipt : Document
+{
+    public decimal Amount { get; set; }
+
+    // Перевизначення методу PrintInfo для Receipt
+    public override void PrintInfo()
+    {
+        base.PrintInfo();
+        Console.WriteLine($"Amount: {Amount}");
+    }
+}
+
+// Похідний клас Invoice
+public class Invoice : Document
+{
+    public string CustomerName { get; set; }
+
+    // Перевизначення методу PrintInfo для Invoice
+    public override void PrintInfo()
+    {
+        base.PrintInfo();
+        Console.WriteLine($"Customer Name: {CustomerName}");
+    }
+}
+
+// Похідний клас Bill
+public class Bill : Document
+{
+    public string Recipient { get; set; }
+
+    // Перевизначення методу PrintInfo для Bill
+    public override void PrintInfo()
+    {
+        base.PrintInfo();
+        Console.WriteLine($"Recipient: {Recipient}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Створення об'єктів кожного класу
+        Document doc1 = new Receipt { Number = "R001", Date = DateTime.Now, Amount = 100.50m };
+        Document doc2 = new Invoice { Number = "INV001", Date = DateTime.Now, CustomerName = "John Doe" };
+        Document doc3 = new Bill { Number = "B001", Date = DateTime.Now, Recipient = "Company XYZ" };
+
+        // Тестування виведення інформації про кожен документ
+        PrintDocumentInfo(doc1);
+        PrintDocumentInfo(doc2);
+        PrintDocumentInfo(doc3);
     }
 
-}
-class UserClass
-{
-    public string Name { get; set; }
+    // Метод для виведення інформації про документ
+    static void PrintDocumentInfo(Document doc)
+    {
+        Console.WriteLine("\nDocument Information:");
+        doc.PrintInfo();
+    }
 }
