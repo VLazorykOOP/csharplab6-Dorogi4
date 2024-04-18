@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 
 // Базовий клас Document
 public abstract class Document
@@ -75,3 +75,4 @@ class Program
         doc.PrintInfo();
     }
 }
+*/
