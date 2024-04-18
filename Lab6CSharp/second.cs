@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 
 // Інтерфейс програмного забезпечення
 public interface Software
@@ -19,7 +19,7 @@ public class FreeSoftware : Software
     // Реалізація методу для виведення інформації про програмне забезпечення
     public void DisplayInfo()
     {
-        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Software Name: {Name}");
         Console.WriteLine($"Manufacturer: {Manufacturer}");
     }
 
@@ -41,9 +41,9 @@ public class TrialSoftware : Software
     // Реалізація методу для виведення інформації про програмне забезпечення
     public void DisplayInfo()
     {
-        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Software Name: {Name}");
         Console.WriteLine($"Manufacturer: {Manufacturer}");
-        Console.WriteLine($"Installation Date: {InstallationDate}");
+        Console.WriteLine($"Installation Date: {InstallationDate.ToShortDateString()}");
         Console.WriteLine($"Trial Period (days): {TrialPeriodDays}");
     }
 
@@ -68,10 +68,10 @@ public class CommercialSoftware : Software
     // Реалізація методу для виведення інформації про програмне забезпечення
     public void DisplayInfo()
     {
-        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Software Name: {Name}");
         Console.WriteLine($"Manufacturer: {Manufacturer}");
-        Console.WriteLine($"Price: {Price}");
-        Console.WriteLine($"Installation Date: {InstallationDate}");
+        Console.WriteLine($"Price: {Price:C}");
+        Console.WriteLine($"Installation Date: {InstallationDate.ToShortDateString()}");
         Console.WriteLine($"Validity Period (days): {ValidityPeriodDays}");
     }
 
@@ -99,9 +99,10 @@ class Program
         // Виведення інформації про кожне програмне забезпечення
         foreach (var s in software)
         {
-            Console.WriteLine("\nSoftware Information:");
+            Console.WriteLine("\n------------------------");
             s.DisplayInfo();
             Console.WriteLine($"Can use: {s.CanUse()}");
+            Console.WriteLine("------------------------");
         }
 
         // Пошук програмного забезпечення, яке можна використовувати на поточну дату
@@ -110,8 +111,11 @@ class Program
         {
             if (s.CanUse())
             {
+                Console.WriteLine("\n------------------------");
                 s.DisplayInfo();
+                Console.WriteLine("------------------------");
             }
         }
     }
 }
+*/
